@@ -5,40 +5,43 @@ const Section = ({ dark }) => {
   const [amount, setamount] = useState(0);
 
   const handleDeposit = () => {
-    setbalance(balance + (+amount || 0));
+    setbalance(balance + (+amount ));
     setamount("");
   };
 
   const handleWithdraw = () => {
-    setbalance(balance - (+amount || 0));
+    setbalance(balance - (+amount));
     setamount("");
   };
 
   return (
-    <div
-      style={{
-        width: "1190px",
-        height: "70px",
-        backgroundColor: dark ? "black" : "aqua",
-        color: dark ? "white" : "black",
-        display: "flex",
-        padding: "0px 6%",
-        alignItems: "center",
-        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-      }}
-    >
-
-<p>Balance: ${balance}</p>
-      <input
-        type="text"
-        name="amount"
-        placeholder="enter your amount"
-        onChange={(e) => setamount(e.target.value)}
-      ></input>
-      <button onClick={handleDeposit}>deposit</button>
-      <button onClick={handleWithdraw}>Withdraw</button>
+    <div className="flex justify-center items-center min-h-screen">
+      <div
+        className={`w-[600px] p-6 shadow-md flex flex-col items-center space-y-4 transition-all duration-300 ${dark ? "bg-black text-white" : "bg-aqua text-black"}`}
+      >
+        <p className="text-lg font-bold">Balance: ${balance}</p>
+        <input
+          type="text"
+          name="amount"
+          placeholder="Enter your amount"
+          className={`p-2 border rounded-md transition-all duration-300 ${dark ? "bg-white text-black" : "bg-gray-100 text-black"}`}
+          value={amount}
+          onChange={(e) => setamount(e.target.value)}
+        />
+        <button
+          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-500 transition"
+          onClick={handleDeposit}
+        >
+          Deposit
+        </button>
+        <button
+          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-500 transition"
+          onClick={handleWithdraw}
+        >
+          Withdraw
+        </button>
+      </div>
     </div>
-  );
-};
+  );};
 
 export default Section;

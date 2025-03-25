@@ -3,29 +3,18 @@ import React from "react";
 const Navbar = ({ dark, setdark }) => {
   return (
     <div
-      style={{
-        width: "1190px",
-        height: "70px",
-        backgroundColor: dark ? "black" : "aqua",
-        color: dark ? "white" : "black",
-        justifyContent: "space-between",
-        display: "flex",
-        padding: "0px 6%",
-        alignItems: "center",
-        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-      }}
+      className={`w-full fixed top-0 left-0 h-[70px] flex justify-between items-center px-6 shadow-md transition-all duration-300 z-50 ${dark ? "bg-black text-white" : "bg-aqua text-black"}`}
     >
-      <h1>crypto m5</h1>
+      <h1 className="text-xl font-bold">crypto m5</h1>
       <nav>
-        <ul style={{ listStyle: "none", display: "flex" }}>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Contact</li>
-          <li>Blog</li>
+        <ul className="flex space-x-4 list-none">
+          <li className="cursor-pointer hover:underline">Home</li>
+          <li className="cursor-pointer hover:underline">About us</li>
+          <li className="cursor-pointer hover:underline">Contact</li>
+          <li className="cursor-pointer hover:underline">Blog</li>
           <button
-            onClick={() => {
-              setdark(!dark);
-            }}
+            className="ml-4 px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition"
+            onClick={() => setdark(!dark)}
           >
             Darkmode
           </button>
